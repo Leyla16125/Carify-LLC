@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BsChevronDown, BsPersonFill,BsSuitHeartFill,BsList,BsX } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 
 function HomeHeader() {
@@ -55,21 +56,19 @@ function HomeHeader() {
         <nav className="min-w-[454px] hidden xl:block">
           <ul className='flex sm:flex-row sm:items-center gap-4 sm:justify-between'>
             <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <a href="">Ana Səhifə</a>
-            </li>
-            <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300' >
-              <a href="">Avtomobillər</a>
+              <Link to="/">Ana Səhifə</Link>
             </li>
             <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <a href="">Haqqımızda</a>
+              <Link to="">Avtomobillər</Link>
             </li>
             <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <a href="">
-                Sənədlər
-              </a>
+              <Link to="/about">Haqqımızda</Link>
             </li>
             <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <a href="">Əlaqə</a>
+              <Link to="">Sənədlər</Link>
+            </li>
+            <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
+              <Link to="">Əlaqə</Link>
             </li>
           </ul>
         </nav>

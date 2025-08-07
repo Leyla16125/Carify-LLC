@@ -4,6 +4,7 @@ import Map from '../Map'
 import Whyus from '../Whyus'
 import Services from '../Services'
 import Partners from '../Partners'
+import Common from './Common'
 
 function HomeMain() {
   return (
@@ -12,6 +13,7 @@ function HomeMain() {
     <Whyus />
     <ProcedureSection />
     <Partners />
+    <Common />
     <Map />
     </>
   )
