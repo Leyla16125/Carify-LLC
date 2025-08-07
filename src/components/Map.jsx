@@ -4,8 +4,8 @@ function Map() {
   const [activeTab, setActiveTab] = useState('azerbaijan');
 
   return (
-    <>
-      <div className="mb-11 flex h-12 justify-center gap-x-6">
+    <section className='mt-20 sm:mt-10'>
+      <div className="mb-11 flex h-12 justify-center gap-x-6 ">
         <button 
           className={`h-full rounded-lg border-2 px-5 transition-colors duration-200 focus:outline-none cursor-pointer ${
             activeTab === 'azerbaijan'
@@ -29,7 +29,7 @@ function Map() {
       </div>
 
       {activeTab === 'azerbaijan' && (
-        <div className="flex justify-center py-10 px-4 bg-gray-100">
+        <div className="flex justify-center py-10 px-4 ">
           <div className="max-w-6xl w-full rounded-2xl overflow-hidden shadow-lg bg-white">
             <div className="grid md:grid-cols-2 gap-0">
               <div className="p-8 space-y-4">
@@ -125,7 +125,7 @@ function Map() {
           </div>
         </div>
       )}
-    </>
+    </section>
   );
 }
 
