@@ -1,10 +1,19 @@
-import React from 'react'
+// src/components/pages/About.jsx
+import React from "react";
+import Whyus from "../Whyus";
+import Partners from "../Partners"
+import PartofAbout from "../about/PartofAbout";
 
-function About() {
+const About = () => {
   return (
-    <section>
-    </section>
-  )
-}
+    <div>
 
-export default About
+
+      <PartofAbout />
+      <Whyus />
+      <Partners />
+    </div>
+  );
+};
+
+export default About;

@@ -42,7 +42,7 @@ function WhyUs() {
   ];
 
   return (
-    <section className="w-full px-4 sm:px-8 lg:px-20 xsm:mx-4 xsm:my-10 xl:mx-auto xl:my-[120px] xl:max-w-container">
+    <section className="w-full px-4 sm:px-8 lg:px-20 xsm:mx-4 xsm:my-10 xl:mx-auto xl:my-[40px] xl:max-w-container">
         <div>
             <h2 className="text-[36px] leading-[40px] sm:text-[40px] sm:leading-[48px] md:text-[48px] md:leading-[56px] lg:text-[56px] lg:leading-[64px] font-bold text-[#3c0000] mb-6 md:mb-8 max-w-full lg:max-w-[900px] mx-auto lg:mx-0 pt-10">Niyə Biz?</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1400px] mx-auto">

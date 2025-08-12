@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BsChevronDown, BsPersonFill,BsSuitHeartFill,BsList,BsX } from "react-icons/bs";
-import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 
 function HomeHeader() {
@@ -49,29 +49,79 @@ function HomeHeader() {
 
       <div className='absolute w-full flex justify-between items-center px-4 sm:px-8 lg:px-20 py-10'>
 
-        <a className="flex items-center justify-center xsm:h-4 xsm:w-[196px] xl:h-10 xl:w-[220px] cursor-pointer">
+        <a className="flex items-center justify-center xsm:h-4 xsm:w-[200px] xl:h-10 xl:w-[224px] cursor-pointer">
             <img className="w-[80%] max-w-[160px] sm:max-w-[220px] object-contain" src="./img/logo-HD95psKb.webp" alt="logo" />
         </a>
 
         <nav className="min-w-[454px] hidden xl:block">
-          <ul className='flex sm:flex-row sm:items-center gap-4 sm:justify-between'>
-            <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <Link to="/">Ana Səhifə</Link>
-            </li>
-            <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <Link to="">Avtomobillər</Link>
-            </li>
-            <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <Link to="/about">Haqqımızda</Link>
-            </li>
-            <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <Link to="">Sənədlər</Link>
-            </li>
-            <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300'>
-              <Link to="">Əlaqə</Link>
-            </li>
-          </ul>
+  <ul className='flex sm:flex-row sm:items-center gap-4 sm:justify-between'>
+    <li>
+      <NavLink
+        to="/home"
+        className={({ isActive }) =>
+          isActive
+            ? "text-[rgba(144,0,0)] font-bold"
+            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+        }
+      >
+        Ana Səhifə
+      </NavLink>
+    </li>
+    
+    <li>
+      <NavLink
+        to="/cars"
+        className={({ isActive }) =>
+          isActive
+            ? "text-[rgba(144,0,0)] font-bold"
+            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+        }
+      >
+        Avtomobillər
+      </NavLink>
+    </li>
+
+    <li>
+      <NavLink
+        to="/about"
+        className={({ isActive }) =>
+          isActive
+            ? "text-[rgba(144,0,0)] font-bold"
+            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+        }
+      >
+        Haqqımızda
+      </NavLink>
+    </li>
+
+    <li>
+      <NavLink
+        to="/documents"
+        className={({ isActive }) =>
+          isActive
+            ? "text-[rgba(144,0,0)] font-bold"
+            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+        }
+      >
+        Sənədlər
+      </NavLink>
+    </li>
+
+    <li>
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          isActive
+            ? "text-[rgba(144,0,0)] font-bold"
+            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+        }
+      >
+        Əlaqə
+      </NavLink>
+    </li>
+  </ul>
         </nav>
+
 
         <div className='hidden xl:flex gap-3 '> 
           <button className="flex h-10 items-center gap-x-2 rounded-lg border border-[#B9BABB] px-3 py-2 text-[#B9BABB]">
@@ -115,11 +165,11 @@ function HomeHeader() {
           </button>
 
           <img className='w-[80%] max-w-[160px] sm:max-w-[220px] object-contain' src="./img/logo-red-6xBktdhv.png" alt="logo" />
-          <a href="">Ana Səhifə</a>
-          <a href="">Avtomobillər</a>
-          <a href="">Haqqımızda</a>
-          <a href="">Sənədlər</a>
-          <a href="">Əlaqə</a>
+          <NavLink to="/cars" onClick={() => setOpenMenu(false)}>Avtomobillər</NavLink>
+          <NavLink to="/about" onClick={() => setOpenMenu(false)}>Haqqımızda</NavLink>
+          <NavLink to="/documents" onClick={() => setOpenMenu(false)}>Sənədlər</NavLink>
+          <NavLink to="/contact" onClick={() => setOpenMenu(false)}>Əlaqə</NavLink>
+
           <a className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
             <BsPersonFill />
           </a>
@@ -135,7 +185,12 @@ function HomeHeader() {
           Carify ilə Hər Zaman Güvəndə!
         </h2>
         <form className="grid grid-cols-3 gap-4 md:w-[654px] py-4">
-          <input name="trackingId" placeholder="Konteyner nömrəsi" className="col-span-2 flex h-14 items-center rounded-lg px-4 text-black bg-white" value="" />
+        <input
+          defaultValue=""
+          name="trackingId"
+          placeholder="Konteyner nömrəsi"
+          className="col-span-2 flex h-14 items-center rounded-lg px-4 text-black bg-white"
+        />
           <button type="submit" className="cursor pointer col-span-1 flex h-14 items-center justify-center rounded-lg text-[#F9F9F9] bg-[rgba(144,0,0)]">Axtar</button>
         </form>
       </div>

@@ -45,7 +45,11 @@ function Footer() {
                 </div>
 
                 <form className="hidden md:grid grid-cols-3 gap-4 md:w-[654px] py-4">
-                    <input name="trackingId" placeholder="Konteyner nömrəsi" className="col-span-2 flex h-14 items-center rounded-lg px-4 text-black bg-white" value="" />
+                <input
+                name="trackingId"
+                placeholder="Konteyner nömrəsi"
+                className="col-span-2 flex h-14 items-center rounded-lg px-4 text-black bg-white"
+                />
                     <button type="submit" className="cursor pointer col-span-1 flex h-14 items-center justify-center rounded-lg text-[#F9F9F9] bg-[rgba(144,0,0)]">Axtar</button>
                 </form>
             </div>
