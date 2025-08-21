@@ -90,9 +90,12 @@ function CommonHeader() {
             <BsChevronDown />
           </button>
 
-          <a className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
+          <NavLink 
+            to="/login"
+            className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
+          >
             <BsPersonFill />
-          </a>
+          </NavLink>
 
           <a className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
             <BsSuitHeartFill />
