@@ -7,7 +7,7 @@ import { Navigate } from "react-router-dom";
 import Login from "./src/components/pages/Login";
 import Cars from "./src/components/pages/Cars";
 import CarDetails from "./src/components/pages/CarDetails";
-
+import Contact from "./src/components/pages/Contact";
 
 function App() {
   return (
@@ -22,6 +22,9 @@ function App() {
         </Route>
         <Route element={<CommonLayout />}>
           <Route path="/about" element={<About />} />
+        </Route>
+        <Route element={<CommonLayout />}>
+          <Route path="/contact" element={ <Contact />}></Route>
         </Route>
       </Routes>
     </Router>

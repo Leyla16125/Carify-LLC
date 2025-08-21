@@ -7,8 +7,6 @@ import PartofAbout from "../about/PartofAbout";
 const About = () => {
   return (
     <div>
-
-
       <PartofAbout />
       <Whyus />
       <Partners />
