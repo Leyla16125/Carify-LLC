@@ -97,9 +97,11 @@ function CommonHeader() {
             <BsPersonFill />
           </NavLink>
 
-          <a className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
+          <NavLink
+          to="/like"
+          className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
             <BsSuitHeartFill />
-          </a>
+          </NavLink>
 
           <a className="flex h-10 cursor-pointer items-center gap-x-2 rounded-lg bg-[rgba(144,0,0)] px-5 py-2">
             <span className="text-[#F9F9F9]">İzləmə</span>
