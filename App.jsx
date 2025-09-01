@@ -9,6 +9,9 @@ import CarDetails from "./src/components/pages/CarDetails";
 import Contact from "./src/components/pages/Contact";
 import Like from "./src/components/pages/Like";
 import Documents from "./src/components/pages/Documents"
+import Logistics from "./src/components/srvcs/Logistics";
+import VehicleInspection from "./src/components/srvcs/VehicleInspection";
+import VehicleSearch from "./src/components/srvcs/VehicleSearch";
 import { LikeProvider } from "./src/components/pages/LikeContext";
 
 function App() {
@@ -27,6 +30,9 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/like" element={<Like />} />
             <Route path="/documents" element={<Documents />} />
+            <Route path="/services/logistics" element={<Logistics/>} />
+            <Route path="/services/vehicle-search" element={<VehicleSearch/>}/>
+            <Route path="/services/vehicle-inspection" element={<VehicleInspection/>}/>
           </Route>
         </Routes>
       </Router>

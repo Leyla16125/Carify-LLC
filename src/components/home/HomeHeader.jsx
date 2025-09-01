@@ -12,6 +12,7 @@ function HomeHeader() {
 
   const [currentImg, setCurrentImg] = useState(0);
   const [openMenu, setOpenMenu] =useState(false);
+  const [openServices, setOpenServices] = useState(false);
 
   useEffect(() => {
     images.forEach(image => {
@@ -54,72 +55,114 @@ function HomeHeader() {
         </a>
 
         <nav className="min-w-[454px] hidden xl:block">
-  <ul className='flex sm:flex-row sm:items-center gap-4 sm:justify-between'>
-    <li>
-      <NavLink
-        to="/home"
-        className={({ isActive }) =>
-          isActive
-            ? "text-[rgba(144,0,0)] font-bold"
-            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
-        }
-      >
-        Ana Səhifə
-      </NavLink>
-    </li>
-    
-    <li>
-      <NavLink
-        to="/cars"
-        className={({ isActive }) =>
-          isActive
-            ? "text-[rgba(144,0,0)] font-bold"
-            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
-        }
-      >
-        Avtomobillər
-      </NavLink>
-    </li>
+        <ul className='flex sm:flex-row sm:items-center gap-4 sm:justify-between'>
+          <li>
+            <NavLink
+              to="/home"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[rgba(144,0,0)] font-bold"
+                  : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+              }
+            >
+              Ana Səhifə
+            </NavLink>
+          </li>
+          
+          <li>
+            <NavLink
+              to="/cars"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[rgba(144,0,0)] font-bold"
+                  : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+              }
+            >
+              Avtomobillər
+            </NavLink>
+          </li>
 
-    <li>
-      <NavLink
-        to="/about"
-        className={({ isActive }) =>
-          isActive
-            ? "text-[rgba(144,0,0)] font-bold"
-            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
-        }
-      >
-        Haqqımızda
-      </NavLink>
-    </li>
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[rgba(144,0,0)] font-bold"
+                  : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+              }
+            >
+              Haqqımızda
+            </NavLink>
+          </li>
 
-    <li>
-      <NavLink
-        to="/documents"
-        className={({ isActive }) =>
-          isActive
-            ? "text-[rgba(144,0,0)] font-bold"
-            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
-        }
-      >
-        Sənədlər
-      </NavLink>
-    </li>
+      <li className="relative">
+                    <button
+                      onClick={() => setOpenServices(!openServices)}
+                      className="flex cursor-pointer items-center gap-1 text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+                    >
+                      Xidmətlər{" "}
+                      <BsChevronDown
+                        className={`${openServices ? "rotate-180" : ""} transition-transform`}
+                      />
+                    </button>
+                    {openServices && (
+                      <ul className="absolute left-0 mt-2 w-50 bg-white border border-gray-200 rounded-lg shadow-lg z-50 flex flex-col">
+                        <li>
+                          <NavLink
+                            to="/services/vehicle-inspection"
+                            className="block px-4 py-2 hover:bg-gray-100"
+                            onClick={() => setOpenServices(false)}
+                          >
+                            Avtomobil Yoxlanış
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/services/vehicle-search"
+                            className="block px-4 py-2 hover:bg-gray-100"
+                            onClick={() => setOpenServices(false)}
+                          >
+                            Avtomobil Axtarışı
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/services/logistics"
+                            className="block px-4 py-2 hover:bg-gray-100"
+                            onClick={() => setOpenServices(false)}
+                          >
+                            Daşınma
+                          </NavLink>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+          <li>
+            <NavLink
+              to="/documents"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[rgba(144,0,0)] font-bold"
+                  : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+              }
+            >
+              Sənədlər
+            </NavLink>
+          </li>
 
-    <li>
-      <NavLink
-        to="/contact"
-        className={({ isActive }) =>
-          isActive
-            ? "text-[rgba(144,0,0)] font-bold"
-            : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
-        }
-      >
-        Əlaqə
-      </NavLink>
-    </li>
-  </ul>
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[rgba(144,0,0)] font-bold"
+                  : "text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300"
+              }
+            >
+              Əlaqə
+            </NavLink>
+          </li>
+        </ul>
         </nav>
 
 
@@ -157,28 +200,95 @@ function HomeHeader() {
         </div>
 
         <div
-          className={`absolute top-0 left-0 w-full h-screen bg-white text-black flex flex-col items-start px-4 py-6 gap-4 xl:hidden z-50
-          transition-all duration-500 ease-in-out
-          ${openMenu ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-10 invisible'}`}
-        >
-          <button
-            onClick={() => setOpenMenu(false)}
-            className="text-3xl self-end mb-4 cursor-pointer"
-          >
-            <BsX />
-          </button>
-
-          <img className='w-[80%] max-w-[160px] sm:max-w-[220px] object-contain' src="./img/logo-red-6xBktdhv.png" alt="logo" />
-          <NavLink to="/cars" onClick={() => setOpenMenu(false)}>Avtomobillər</NavLink>
-          <NavLink to="/about" onClick={() => setOpenMenu(false)}>Haqqımızda</NavLink>
-          <NavLink to="/documents" onClick={() => setOpenMenu(false)}>Sənədlər</NavLink>
-          <NavLink to="/contact" onClick={() => setOpenMenu(false)}>Əlaqə</NavLink>
-
-          <a className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
-            <BsPersonFill />
-          </a>
-
-        </div>
+                  className={`fixed top-0 left-0 w-full h-full bg-white text-black flex flex-col items-start px-4 py-6 gap-4 xl:hidden z-50
+                  transition-all duration-500 ease-in-out overflow-y-auto
+                  ${openMenu ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-10 invisible"}`}
+                >
+                  <button
+                    onClick={() => setOpenMenu(false)}
+                    className="text-3xl self-end mb-4 cursor-pointer absolute top-4 right-4"
+                  >
+                    <BsX />
+                  </button>
+        
+                  <img
+                    className="w-[80%] max-w-[160px] sm:max-w-[220px] object-contain mt-8"
+                    src="./img/logo-red-6xBktdhv.png"
+                    alt="logo"
+                  />
+        
+                  <NavLink to="/home" onClick={() => setOpenMenu(false)} className="w-full py-2">
+                    Ana Səhifə
+                  </NavLink>
+                  <NavLink to="/cars" onClick={() => setOpenMenu(false)} className="w-full py-2">
+                    Avtomobillər
+                  </NavLink>
+                  <NavLink to="/about" onClick={() => setOpenMenu(false)} className="w-full py-2">
+                    Haqqımızda
+                  </NavLink>
+        
+                  <div className="w-full">
+                    <button
+                      onClick={() => setOpenServices(!openServices)}
+                      className="flex items-center gap-2 w-full py-2 justify-between"
+                    >
+                      Xidmətlər
+                      <BsChevronDown
+                        className={`${openServices ? "rotate-180" : ""} transition-transform`}
+                      />
+                    </button>
+                   {openServices && (
+                      <div className="ml-4 flex flex-col gap-2 mt-2">
+                        <NavLink
+                                     to="/services/vehicle-inspection"
+                                     onClick={() => {
+                                       setOpenServices(false);
+                                       setOpenMenu(false);
+                                     }}
+                                     className="py-2"
+                                   >
+                                     Avtomobil Yoxlanış
+                        </NavLink>
+                        <NavLink
+                                     to="/services/vehicle-search"
+                                     onClick={() => {
+                                       setOpenServices(false);
+                                       setOpenMenu(false);
+                                     }}
+                                     className="py-2"
+                                   >
+                                     Avtomobil Axtarışı
+                        </NavLink>
+                        <NavLink
+                                     to="/services/logistics"
+                                     onClick={() => {
+                                       setOpenServices(false);
+                                       setOpenMenu(false);
+                                     }}
+                                     className="py-2"
+                                   >
+                                     Daşınma
+                        </NavLink>
+                      </div>
+                  )}
+                  </div>
+        
+                  <NavLink to="/documents" onClick={() => setOpenMenu(false)} className="w-full py-2">
+                    Sənədlər
+                  </NavLink>
+                  <NavLink to="/contact" onClick={() => setOpenMenu(false)} className="w-full py-2">
+                    Əlaqə
+                  </NavLink>
+                  
+                  <div className="flex gap-3 mt-4">
+                    <a className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
+                      <BsPersonFill />
+                    </a>
+                    <a className="flex h-10 cursor-pointer items-center gap-x-2 rounded-lg bg-[rgba(144,0,0)] px-5 py-2">
+                      <span className="text-[#F9F9F9]">İzləmə</span>
+                    </a>
+                  </div>
+                </div>
 
       </div>
 
