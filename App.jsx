@@ -8,6 +8,7 @@ import Cars from "./src/components/pages/Cars";
 import CarDetails from "./src/components/pages/CarDetails";
 import Contact from "./src/components/pages/Contact";
 import Like from "./src/components/pages/Like";
+import Documents from "./src/components/pages/Documents"
 import { LikeProvider } from "./src/components/pages/LikeContext";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/like" element={<Like />} />
+            <Route path="/documents" element={<Documents />} />
           </Route>
         </Routes>
       </Router>
