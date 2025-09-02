@@ -16,11 +16,9 @@ function Documents() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // refs for custom nav
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  // Swiper needs refs attached after render
   const [navigationReady, setNavigationReady] = useState(false);
   useEffect(() => setNavigationReady(true), []);
 
@@ -41,7 +39,6 @@ function Documents() {
 
   return (
     <section className="w-full px-3 sm:px-6 lg:px-12 my-8 lg:my-12 max-w-[1280px] mx-auto">
-      {/* Inline styles for custom nav buttons */}
       <style>{`
         .custom-nav-btn {
           display: inline-flex;
@@ -67,21 +64,17 @@ function Documents() {
         }
       `}</style>
 
-      {/* Başlıq */}
       <h2 className="text-center font-bold text-[#3c0000] text-2xl sm:text-3xl lg:text-4xl">
         Rəsmi Sənədlər
       </h2>
 
-      {/* Mətn */}
       <p className="text-center text-[#282B2C] text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mt-3 leading-relaxed">
         Avtomobil alışı zamanı rəsmi sənədlər, o cümlədən invoys və alıcı ilə
         şirkətimiz arasında bağlanan müqavilə formaları tam şəkildə təqdim
         edilir və bütün proses qanunvericiliyə uyğun şəkildə həyata keçirilir.
       </p>
 
-      {/* Qalereya və məlumat bloku */}
       <div className="mt-10 flex flex-col lg:flex-row gap-10 items-start">
-        {/* Mətn bloku */}
         <div className="lg:w-2/5 flex flex-col gap-6">
           <h3 className="text-center lg:text-left text-2xl sm:text-3xl lg:text-4xl font-semibold">
             Müqavilə
@@ -96,9 +89,7 @@ function Documents() {
           </p>
         </div>
 
-        {/* Slider qalereya */}
         <div className="lg:w-3/5 relative">
-          {/* Custom prev button */}
           <button
             ref={prevRef}
             className="custom-nav-btn custom-prev absolute left-3 top-1/2 -translate-y-1/2 z-20"
@@ -109,7 +100,6 @@ function Documents() {
             </svg>
           </button>
 
-          {/* Custom next button */}
           <button
             ref={nextRef}
             className="custom-nav-btn custom-next absolute right-3 top-1/2 -translate-y-1/2 z-20"
@@ -134,10 +124,7 @@ function Documents() {
                 1024: { slidesPerView: 4 }, // desktop
               }}
               onInit={(swiper) => {
-                // connect navigation refs (needed because refs are null on first render)
-                // eslint-disable-next-line no-param-reassign
                 swiper.params.navigation.prevEl = prevRef.current;
-                // eslint-disable-next-line no-param-reassign
                 swiper.params.navigation.nextEl = nextRef.current;
                 swiper.navigation.init();
                 swiper.navigation.update();
@@ -165,14 +152,12 @@ function Documents() {
         </div>
       </div>
 
-      {/* Lightbox */}
       {isOpen && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-3"
           aria-modal="true"
           role="dialog"
         >
-          {/* Bağla */}
           <button
             className="absolute right-4 top-4 rounded-full bg-white/90 p-3 shadow hover:bg-white"
             aria-label="Bağla"
@@ -181,7 +166,6 @@ function Documents() {
             ✕
           </button>
 
-          {/* Əvvəlki (lightbox) */}
           <button
             className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow hover:bg-white"
             aria-label="Əvvəlki"
@@ -190,7 +174,6 @@ function Documents() {
             ‹
           </button>
 
-          {/* Şəkil */}
           <figure className="w-full max-w-4xl">
             <img
               src={contractImages[activeIndex]}
@@ -202,7 +185,6 @@ function Documents() {
             </figcaption>
           </figure>
 
-          {/* Növbəti (lightbox) */}
           <button
             className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow hover:bg-white"
             aria-label="Növbəti"
