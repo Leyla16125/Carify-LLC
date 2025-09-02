@@ -9,9 +9,9 @@ import CarDetails from "./components/pages/CarDetails";
 import Contact from "./components/pages/Contact";
 import Like from "./components/pages/Like";
 import Documents from "./components/pages/Documents"
-import Logistics from "./components/srvcs/Logistics";
 import VehicleInspection from "./components/srvcs/VehicleInspection";
 import VehicleSearch from "./components/srvcs/VehicleSearch";
+import Logistics from "./components/srvcs/Logistics";
 import { LikeProvider } from "./components/pages/LikeContext";
 
 function App() {
