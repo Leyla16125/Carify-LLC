@@ -42,3 +42,4 @@ function VehicleInspection() {
   </section>
   )
 }
+export default VehicleInspection;
