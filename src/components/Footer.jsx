@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaTiktok, FaInstagram } from "react-icons/fa6";
 import { FaFacebook, FaWhatsapp, FaTelegram } from "react-icons/fa";
-
+import { NavLink } from "react-router-dom";
 
 function Footer() {
   return (
@@ -15,21 +15,22 @@ function Footer() {
                 <nav className="w-full md:w-auto">
                 <ul className='md:flex flex-wrap justify-center gap-4 md:gap-6'>
                     <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300 py-2 px-4'>
-                    <a href="">Ana Səhifə</a>
+                    <NavLink to="/home">Ana Səhifə</NavLink>
                     </li>
                     <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300 py-2 px-4' >
-                    <a href="">Avtomobillər</a>
+                    <NavLink to="/cars">Avtomobillər</NavLink>
                     </li>
                     <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300 py-2 px-4'>
-                    <a href="">Haqqımızda</a>
+                    <NavLink to="/about">Haqqımızda</NavLink>
                     </li>
                     <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300 py-2 px-4'>
-                    <a href="">
-                        Sənədlər
-                    </a>
+                    <NavLink to="/services/vehicle-inspection">Xidmətlər</NavLink>
                     </li>
                     <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300 py-2 px-4'>
-                    <a href="">Əlaqə</a>
+                    <NavLink to="/documents">Sənədlər</NavLink>
+                    </li>
+                    <li className='text-[rgb(249,249,249)] hover:text-[rgba(144,0,0)] transition-colors duration-300 py-2 px-4'>
+                    <NavLink to="/contact">Əlaqə</NavLink>
                     </li>
                 </ul>
                 </nav>

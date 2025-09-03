@@ -13,7 +13,7 @@ import VehicleInspection from "./components/srvcs/VehicleInspection";
 import VehicleSearch from "./components/srvcs/VehicleSearch";
 import Logistics from "./components/srvcs/Logistics";
 import { LikeProvider } from "./components/pages/LikeContext";
-
+import ScrollTopButton from "./components/ScrollTopButton";
 function App() {
   return (
     <LikeProvider>
@@ -35,6 +35,7 @@ function App() {
             <Route path="/services/vehicle-inspection" element={<VehicleInspection/>}/>
           </Route>
         </Routes>
+        <ScrollTopButton />
       </Router>
     </LikeProvider>
   );
