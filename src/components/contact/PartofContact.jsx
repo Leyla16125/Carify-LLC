@@ -45,7 +45,7 @@ function PartofContact() {
 
   return (
     <section className="w-full px-4 sm:px-8 lg:px-20 xsm:mx-4 xsm:my-10 xl:mx-auto xl:my-[40px] xl:max-w-container">
-      <h2 className='text-center font-bold text-[#3c0000] text-2xl xsm:text-3xl lg:text-4xl'>
+      <h2 className='text-center font-bold text-[rgba(144,0,0)] text-2xl xsm:text-3xl lg:text-4xl'>
         Bizimlə Əlaqə
       </h2>
 

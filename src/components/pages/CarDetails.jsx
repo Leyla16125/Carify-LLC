@@ -30,7 +30,6 @@ function CarDetails() {
         setCar(selectedCar || null);
 
         if (selectedCar) {
-          // Əgər artıq like olunubsa state true olsun
           setLiked(likedCars.some((c) => c.id === selectedCar.id));
         }
       });
@@ -50,6 +49,30 @@ function CarDetails() {
 
   return (
     <section className="w-full px-2 sm:px-6 lg:px-10 xl:mx-auto xl:my-10 xl:max-w-7xl">
+      <style>{`
+        .swiper-button-next,
+        .swiper-button-prev {
+          color: rgba(144,0,0);
+        }
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+          color: #7c0101;
+        }
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+          font-size: 24px;
+        }
+        .swiper-pagination-bullet {
+          background-color: white; 
+          opacity: 0.5; 
+        }
+        .swiper-pagination-bullet-active {
+          background-color: rgba(144,0,0); 
+          opacity: 1;
+        }
+
+      `}</style>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <div className="lg:col-span-2">
@@ -132,12 +155,18 @@ function CarDetails() {
           </div>
 
           <div className="space-y-3 mt-6">
-            <button className="cursor-pointer w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-[#900000] text-[#900000] hover:bg-red-50">
+            <a 
+                href="mailto:info@carify.az"
+                className="cursor-pointer w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-[#900000] text-[#900000] hover:bg-red-50">
               <IoMdMail /> Bizə yazın
-            </button>
-            <button className="cursor-pointer w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-[#900000] text-white hover:bg-[#7c0101]">
+            </a>
+            <a 
+                href="https://wa.me/994777665665"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-[#900000] text-white hover:bg-[#7c0101]">
               <IoIosCall /> Sifariş edin
-            </button>
+            </a>
           </div>
         </div>
       </div>

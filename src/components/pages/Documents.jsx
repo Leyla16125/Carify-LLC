@@ -52,7 +52,7 @@ function Documents() {
           transition: transform .12s ease, box-shadow .12s ease;
           border: none;
           cursor: pointer;
-        }
+        } 
         .custom-nav-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.14); }
         .custom-nav-btn svg { width: 16px; height: 16px; }
         /* arrow color = rgba(144,0,0) */
@@ -64,7 +64,7 @@ function Documents() {
         }
       `}</style>
 
-      <h2 className="text-center font-bold text-[#3c0000] text-2xl sm:text-3xl lg:text-4xl">
+      <h2 className="text-center font-bold text-[rgba(144,0,0)] text-2xl sm:text-3xl lg:text-4xl">
         Rəsmi Sənədlər
       </h2>
 

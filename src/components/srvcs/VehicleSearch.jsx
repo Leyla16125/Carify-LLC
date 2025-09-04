@@ -14,7 +14,6 @@ function VehicleSearch() {
         Müştərilərə avtomobil seçimi, baxımı və alışı prosesində peşəkar dəstək göstəririk.
       </p>
 
-      {/* Top Image */}
       <div className="my-10 mb-20 mx-auto h-[400px] max-w-container overflow-hidden xsm:mb-16 xsm:rounded-none xl:rounded-2xl py-4">
         <div className="relative h-full w-full object-cover">
           <img
@@ -25,7 +24,6 @@ function VehicleSearch() {
         </div>
       </div>
 
-      {/* Video + Text */}
       <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
         <div className="w-full md:w-1/2">
           <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Avtomobil Axtarışı</h3>
@@ -58,7 +56,6 @@ function VehicleSearch() {
         </div>
       </div>
 
-      {/* Cards Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="flex flex-col p-6 space-y-6 rounded-lg shadow-md bg-white h-full">
           <div className="flex space-x-4">
