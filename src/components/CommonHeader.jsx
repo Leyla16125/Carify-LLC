@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 function CommonHeader() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openServices, setOpenServices] = useState(false);
+  const [openLang, setOpenLang] = useState(false);
+  const [language, setLanguage] = useState("Az");  
 
   return (
     <header className="relative z-10">
@@ -61,7 +63,7 @@ function CommonHeader() {
             <li className="relative">
               <button
                 onClick={() => setOpenServices(!openServices)}
-                className="flex items-center gap-1 hover:text-[rgba(144,0,0)] transition-colors"
+                className="flex items-center gap-1 cursor-pointer hover:text-[rgba(144,0,0)] transition-colors"
               >
                 Xidmətlər{" "}
                 <BsChevronDown
@@ -128,10 +130,41 @@ function CommonHeader() {
         </nav>
 
         <div className="hidden xl:flex gap-3 relative z-10">
-          <button className="flex h-10 items-center gap-x-2 rounded-lg border border-[#B9BABB] px-3 py-2 text-[#B9BABB]">
-            <span>Az</span>
-            <BsChevronDown />
-          </button>
+          <div className='relative'>
+            <button 
+              onClick={() => setOpenLang(!openLang)}
+              className="cursor-pointer flex h-10 items-center gap-x-2 rounded-lg border border-[#B9BABB] px-3 py-2 text-[#B9BABB]">
+              <span>{language}</span>
+              <BsChevronDown className={`${openLang ? "rotate-180" : ""} transition-transform`} />
+            </button>
+          
+            {openLang && (
+              <ul className="cursor-pointer absolute right-0 mt-2 w-28 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                <li>
+                  <button
+                    onClick={() => {
+                      setLanguage("Az");   
+                      setOpenLang(false); 
+                    }}
+                    className="cursor-pointer block w-full px-4 py-2 text-left hover:bg-gray-100"
+                  >
+                    Az
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setLanguage("En");   
+                      setOpenLang(false); 
+                    }}
+                    className="cursor-pointer block w-full px-4 py-2 text-left hover:bg-gray-100"
+                  >
+                    En
+                  </button>
+                </li>
+              </ul>
+              )}
+          </div>
 
           <NavLink
             to="/login"
@@ -243,9 +276,50 @@ function CommonHeader() {
           </NavLink>
           
           <div className="flex gap-3 mt-4">
-            <a className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
+            <div className='relative'>
+              <button 
+                onClick={() => setOpenLang(!openLang)}
+                className="cursor-pointer flex h-10 items-center gap-x-2 rounded-lg border border-[#B9BABB] px-3 py-2 text-[#B9BABB]">
+               <span>{language}</span>
+              <BsChevronDown className={`${openLang ? "rotate-180" : ""} transition-transform`} />
+              </button>
+            
+              {openLang && (
+                <ul className="cursor-pointer absolute left-0 mt-2 w-28 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                  <li>
+                    <button
+                      onClick={() => {
+                        setLanguage("Az");   
+                        setOpenLang(false); 
+                      }}
+                      className="cursor-pointer block w-full px-4 py-2 text-left hover:bg-gray-100"
+                    >
+                      Az
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        setLanguage("En");   
+                        setOpenLang(false); 
+                      }}
+                      className="cursor-pointer block w-full px-4 py-2 text-left hover:bg-gray-100"
+                    >
+                      En
+                    </button>
+                  </li>
+                </ul>
+                )}
+            </div>
+          <NavLink
+            to="/like"
+            className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
+          >
+            <BsSuitHeartFill />
+          </NavLink>
+            <NavLink to="/login" className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
               <BsPersonFill />
-            </a>
+            </NavLink>
             <a className="flex h-10 cursor-pointer items-center gap-x-2 rounded-lg bg-[rgba(144,0,0)] px-5 py-2">
               <span className="text-[#F9F9F9]">İzləmə</span>
             </a>
