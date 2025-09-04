@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { BsChevronDown, BsPersonFill, BsSuitHeartFill, BsList, BsX } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import { useLike } from "./pages/LikeContext";
 
 function CommonHeader() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openServices, setOpenServices] = useState(false);
   const [openLang, setOpenLang] = useState(false);
   const [language, setLanguage] = useState("Az");  
+  const { likedCars } = useLike();
 
   return (
     <header className="relative z-10">
@@ -168,16 +170,21 @@ function CommonHeader() {
 
           <NavLink
             to="/login"
-            className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
+            className=" flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
           >
             <BsPersonFill />
           </NavLink>
 
           <NavLink
             to="/like"
-            className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
+            className="relative flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
           >
-            <BsSuitHeartFill />
+            <BsSuitHeartFill className="text-xl"  />
+            {likedCars.length > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[rgba(144,0,0)] text-white text-xs font-semibold">
+                {likedCars.length}
+              </span>
+            )}
           </NavLink>
 
           <a className="flex h-10 cursor-pointer items-center gap-x-2 rounded-lg bg-[rgba(144,0,0)] px-5 py-2">
@@ -313,10 +320,16 @@ function CommonHeader() {
             </div>
           <NavLink
             to="/like"
-            className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
+            className="relative flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
           >
-            <BsSuitHeartFill />
+            <BsSuitHeartFill className="text-xl" />
+            {likedCars.length > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[rgba(144,0,0)] text-white text-xs font-semibold">
+                {likedCars.length}
+              </span>
+            )}
           </NavLink>
+
             <NavLink to="/login" className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
               <BsPersonFill />
             </NavLink>

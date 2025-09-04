@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useLike } from "../pages/LikeContext";
+
 import {
   BsChevronDown,
   BsPersonFill,
@@ -20,6 +22,7 @@ function HomeHeader() {
   const [openServices, setOpenServices] = useState(false);
   const [openLang, setOpenLang] = useState(false);
   const [language, setLanguage] = useState("Az");
+  const { likedCars } = useLike();
 
   useEffect(() => {
     images.forEach((image) => {
@@ -133,7 +136,7 @@ function HomeHeader() {
                   <li>
                     <NavLink
                       to="/services/vehicle-search"
-                      className="block px-4 py-2 hover:bg-gray-100"
+                      className="relative  block px-4 py-2 hover:bg-gray-100"
                       onClick={() => setOpenServices(false)}
                     >
                       Avtomobil Axtarışı
@@ -229,11 +232,17 @@ function HomeHeader() {
           </NavLink>
 
           <NavLink
-            to="/like"
-            className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
-          >
-            <BsSuitHeartFill />
-          </NavLink>
+              to="/like"
+              className="relative flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
+            >
+              <BsSuitHeartFill />
+              {likedCars.length > 0 && (
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[rgba(144,0,0)] text-white text-xs font-semibold">
+                  {likedCars.length}
+                </span>
+              )}
+            </NavLink>
+
 
           <a className="flex h-10 cursor-pointer items-center gap-x-2 rounded-lg bg-[rgba(144,0,0)] px-5 py-2">
             <span className="text-[#F9F9F9]">İzləmə</span>
@@ -392,11 +401,21 @@ function HomeHeader() {
               </ul>
             )}
           </div>
-          <NavLink
-            to="/like"
-            className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
-            <BsSuitHeartFill />
-          </NavLink>
+          <div className="relative">
+            <NavLink
+              to="/like"
+              className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2"
+            >
+              <BsSuitHeartFill className="text-xl" />
+            </NavLink>
+
+            {likedCars.length > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[rgba(144,0,0)] text-white text-xs font-semibold">
+                {likedCars.length}
+              </span>
+            )}
+          </div>
+
           <NavLink to="/login" className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-[#B9BABB] text-[#B9BABB] px-4 py-2">
             <BsPersonFill />
           </NavLink>
