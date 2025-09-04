@@ -15,7 +15,7 @@ function PartofAbout() {
         <div className="mx-auto h-[400px] max-w-container overflow-hidden xsm:mb-16 xsm:rounded-none xl:rounded-2xl py-4">
             <div className="relative h-full w-full object-cover">
             <img
-                src="../public/img/about-header-BMXlw3Ud.webp"
+                src="/img/about-header-BMXlw3Ud.webp"
                 alt="Image"
                 className="h-full w-full object-cover transition-opacity duration-500 opacity-100"
             />
