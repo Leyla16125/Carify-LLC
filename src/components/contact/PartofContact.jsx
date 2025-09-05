@@ -53,7 +53,7 @@ function PartofContact() {
         Biz həmişə sizə kömək etməyə hazırıq. Hər hansı sualınız varsa, bizimlə əlaqə saxlamaqdan çəkinməyin.
       </p>
 
-      <div className='flex flex-col lg:flex-row justify-between my-40 gap-10'>
+      <div className='flex flex-col lg:flex-row justify-between my-20 gap-10'>
         <div className='lg:max-w-[392px]'>
           <p className='font-bold text-xl xsm:text-2xl lg:text-3xl py-4'>
             Bizimlə Əlaqə saxlayın
