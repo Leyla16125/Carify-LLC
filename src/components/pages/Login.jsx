@@ -30,17 +30,15 @@ export default function AuthPage() {
 
   const handleAuth = () => {
     if (isLogin) {
-      // Login
       const storedUser = localStorage.getItem("username");
       const storedPass = localStorage.getItem("password");
       if (username === storedUser && password === storedPass) {
         setError("");
-        navigate("/home"); // login olundu → home page
+        navigate("/home");
       } else {
         setError("İstifadəçi adı və ya şifrə səhvdir!");
       }
     } else {
-      // Signup
       if (!username || !email || !password || !confirmPassword) {
         setError("Bütün sahələri doldurun!");
         return;
@@ -53,7 +51,6 @@ export default function AuthPage() {
       localStorage.setItem("password", password);
       localStorage.setItem("email", email);
       setError("");
-      // Signup tamamlananda → login səhifəsinə yönləndir
       setIsLogin(true);
       setPassword("");
       setConfirmPassword("");

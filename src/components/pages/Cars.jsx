@@ -104,18 +104,15 @@ function Cars() {
     }
   };
 
-  // Pagination düymələri üçün səhifə nömrələri
   const getPageNumbers = () => {
     const pageNumbers = [];
-    const maxVisiblePages = 5; // Görünən səhifə sayı
+    const maxVisiblePages = 5; 
     
     if (totalPages <= maxVisiblePages) {
-      // Bütün səhifələri göstər
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
       }
     } else {
-      // Məhdud sayda səhifə göstər
       let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
       let endPage = startPage + maxVisiblePages - 1;
       
@@ -135,7 +132,6 @@ function Cars() {
   return (
     <section className="w-full px-2 sm:px-6 lg:px-18 xsm:mx-2 xsm:my-8 xl:mx-auto xl:my-[38px] xl:max-w-container">
       <div className="flex flex-col lg:flex-row">
-        {/* Filtrlər bölməsi */}
         <div className="w-full lg:w-1/4 p-4 mb-4 lg:mb-0 bg-gray-50 rounded-lg">
           <h2 className="text-lg font-bold mb-4 text-[#900000]">Filtrlər</h2>
           
@@ -244,7 +240,6 @@ function Cars() {
           </button>
         </div>
 
-        {/* Maşın siyahısı bölməsi */}
         <div className="w-full lg:w-3/4 p-4">
           {currentCars.length > 0 ? (
             <>
@@ -290,7 +285,6 @@ function Cars() {
             <p className="text-center text-gray-500 py-10">Maşın tapılmadı 🚗</p>
           )}
 
-          {/* Pagination */}
           {filteredCars.length > carsPerPage && (
             <div className="flex justify-center mt-10 gap-1 md:gap-2 flex-wrap">
               <button

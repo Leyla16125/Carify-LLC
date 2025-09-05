@@ -1,4 +1,3 @@
-// Like.js
 import React from "react";
 import { useLike } from "./LikeContext"; 
 import { MdDeleteOutline } from "react-icons/md";
