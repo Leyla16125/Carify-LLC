@@ -25,9 +25,13 @@ function Documents() {
   const openLightbox = (index) => {
     setActiveIndex(index);
     setIsOpen(true);
+    document.body.style.overflow = 'hidden';
   };
 
-  const closeLightbox = () => setIsOpen(false);
+  const closeLightbox = () => {
+    setIsOpen(false);
+    document.body.style.overflow = 'unset';
+  };
 
   const nextImage = () => {
     setActiveIndex((prev) => (prev + 1) % contractImages.length);
@@ -36,6 +40,19 @@ function Documents() {
   const prevImage = () => {
     setActiveIndex((prev) => (prev - 1 + contractImages.length) % contractImages.length);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isOpen) return;
+      
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   return (
     <section className="w-full px-3 sm:px-6 lg:px-12 my-8 lg:my-12 max-w-[1280px] mx-auto">
@@ -57,10 +74,52 @@ function Documents() {
         .custom-nav-btn svg { width: 16px; height: 16px; }
         /* arrow color = rgba(144,0,0) */
         .custom-nav-btn svg path { stroke: rgba(144,0,0); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-        /* position adjustments for smaller screens */
+        
+        /* Mobil üçün nav düymələrinin ölçüsünü kiçilt */
         @media (max-width: 640px) {
+          .custom-nav-btn {
+            width: 30px;
+            height: 30px;
+          }
+          .custom-nav-btn svg {
+            width: 14px;
+            height: 14px;
+          }
           .custom-prev { left: 6px; }
           .custom-next { right: 6px; }
+        }
+
+        /* Lightbox düymələri üçün mobil optimizasiya */
+        .lightbox-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.9);
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+          z-index: 10;
+        }
+        
+        @media (max-width: 640px) {
+          .lightbox-btn {
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+          }
+          .lightbox-prev {
+            left: 8px;
+          }
+          .lightbox-next {
+            right: 8px;
+          }
+          .lightbox-close {
+            top: 12px;
+            right: 12px;
+          }
         }
       `}</style>
 
@@ -74,8 +133,8 @@ function Documents() {
         edilir və bütün proses qanunvericiliyə uyğun şəkildə həyata keçirilir.
       </p>
 
-      <div className="mt-10 flex flex-col lg:flex-row gap-10 items-start">
-        <div className="lg:w-2/5 flex flex-col gap-6">
+      <div className="mt-10 flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
+        <div className="lg:w-2/5 flex flex-col gap-4 lg:gap-6">
           <h3 className="text-center lg:text-left text-2xl sm:text-3xl lg:text-4xl font-semibold">
             Müqavilə
           </h3>
@@ -89,7 +148,7 @@ function Documents() {
           </p>
         </div>
 
-        <div className="lg:w-3/5 relative">
+        <div className="lg:w-3/5 w-full relative">
           <button
             ref={prevRef}
             className="custom-nav-btn custom-prev absolute left-3 top-1/2 -translate-y-1/2 z-20"
@@ -118,10 +177,11 @@ function Documents() {
                 nextEl: nextRef.current,
               }}
               spaceBetween={16}
-              slidesPerView={2} // mobil
+              slidesPerView={1.5} 
               breakpoints={{
-                640: { slidesPerView: 3 }, // tablet
-                1024: { slidesPerView: 4 }, // desktop
+                480: { slidesPerView: 2 },   
+                640: { slidesPerView: 3 },   
+                1024: { slidesPerView: 4 },  
               }}
               onInit={(swiper) => {
                 swiper.params.navigation.prevEl = prevRef.current;
@@ -157,9 +217,10 @@ function Documents() {
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-3"
           aria-modal="true"
           role="dialog"
+          onClick={(e) => e.target === e.currentTarget && closeLightbox()}
         >
           <button
-            className="absolute right-4 top-4 rounded-full bg-white/90 p-3 shadow hover:bg-white"
+            className="lightbox-btn lightbox-close absolute right-4 top-4"
             aria-label="Bağla"
             onClick={closeLightbox}
           >
@@ -167,26 +228,29 @@ function Documents() {
           </button>
 
           <button
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow hover:bg-white"
+            className="lightbox-btn lightbox-prev absolute left-3 sm:left-6 top-1/2 -translate-y-1/2"
             aria-label="Əvvəlki"
             onClick={prevImage}
           >
             ‹
           </button>
 
-          <figure className="w-full max-w-4xl">
-            <img
-              src={contractImages[activeIndex]}
-              alt={`Müqavilə səhifə ${activeIndex + 1}`}
-              className="mx-auto max-h-[80vh] w-auto rounded-lg bg-white object-contain shadow-xl"
-            />
+          <figure className="w-full h-full flex flex-col items-center justify-center">
+            <div className="max-h-[90vh] max-w-[90vw] flex items-center justify-center">
+              <img
+                src={contractImages[activeIndex]}
+                alt={`Müqavilə səhifə ${activeIndex + 1}`}
+                className="h-full w-full object-contain rounded-lg bg-white shadow-xl"
+              />
+            </div>
             <figcaption className="mt-3 text-center text-sm text-white/80">
               Müqavilə — {activeIndex + 1} / {contractImages.length}
             </figcaption>
           </figure>
 
+
           <button
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow hover:bg-white"
+            className="lightbox-btn lightbox-next absolute right-3 sm:right-6 top-1/2 -translate-y-1/2"
             aria-label="Növbəti"
             onClick={nextImage}
           >
